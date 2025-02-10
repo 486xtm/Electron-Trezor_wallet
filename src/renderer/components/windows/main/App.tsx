@@ -12,18 +12,19 @@ import ErrorPage from '@/renderer/components/views/ErrorPage';
 import '@/renderer/styles/globals.scss';
 
 import { SignIn } from '../../views';
-import { MainLayout } from '../../layout';
-
+import { SideBar } from '../../layout';
+import { Settings } from '../../views/main';
+import {CoinInfo} from '../../views/main';
 export const App = () => {
 	const routes = (
 		<Route path="/" errorElement={<ErrorPage />}>
-			<Route index element={<Navigate to="/auth/login" />} />
-			<Route path="auth" element={<MainLayout />}>
+			<Route index element={<Navigate to="login" />} />
 				<Route path="login" element={<SignIn />} />
-			</Route>
-				<Route path="main/home" element={<MainLayout><Home /></MainLayout>}>
-				{/* <Route index element={<Home />} />
-				<Route path="home" element={<Home />} /> */}
+				<Route path="main" element = {<SideBar/>}>
+					<Route path="home" element={<Home />}/>
+					<Route path="setting" element={<Settings/>}/>
+					<Route path="coin/:symbol" element={<CoinInfo />}>
+				</Route>
 			</Route>
 			<Route path="*" element={<SignIn />} />
 		</Route>

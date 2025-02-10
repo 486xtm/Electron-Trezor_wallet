@@ -1,4 +1,4 @@
-import { Layout } from '@/renderer/components/layout/Layout';
+import { Layout } from '@/renderer/components/layout';
 import { App } from '@/renderer/components/windows/main/App';
 import { createRoot } from 'react-dom/client';
 

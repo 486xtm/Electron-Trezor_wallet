@@ -1,12 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import {
-	CloseIcon,
-	MaximizeIcon,
-	MinimizeIcon,
-	MoonIcon,
-} from '../images/Icons';
-import {
 	VscChromeMinimize,
 	VscChromeMaximize,
 	VscChromeClose,
@@ -33,7 +27,7 @@ const Clickable = ({
 	return (
 		<div
 			className={cn(
-				'w-12 h-full flex justify-center items-center cursor-pointer',
+				'w-12 h-full py-2 flex justify-center items-center cursor-pointer',
 				theme === 'light' ? 'hover:bg-gray-200' : 'hover:bg-[#262626]',
 			)}
 			onClick={() => {
@@ -47,23 +41,29 @@ const Clickable = ({
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 	const { theme, setTheme } = useTheme();
-
-	const { settings, setSettings } = useGlobalContext();
-
 	return (
 		<>
 			<div
 				className={cn(
-					'h-full w-full flex flex-col justify-stretch',
-					theme === 'dark' ? 'bg-[#231E26] text-[#BBBAC1]' : '',
+					'h-full w-full flex flex-col',
+					theme === 'dark' ? 'bg-[#231E26] text-[gray]' : '',
 				)}
 			>
-				<div className={cn('h-8 w-full flex justify-between relative')}>
+				<div
+					className={cn(
+						'w-full flex justify-between relative',
+						theme === 'dark' ? 'text-gray-200' : '',
+					)}
+				>
 					<div
 						className="flex z-10 text-xs items-center gap-1 pl-2"
 						onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 					>
-						<img src={`${PROTOCOL}://Trezor/icon/trayLin.png`} className='h-5' alt = "favicon"/>
+						<img
+							src={`${PROTOCOL}://Trezor/icon/trayLin.png`}
+							className="h-5"
+							alt="favicon"
+						/>
 						Trezor Suite
 					</div>
 
@@ -89,12 +89,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 						</Clickable>
 					</div>
 				</div>
-				<div
-					className={cn(
-						'flex justify-center items-center flex-1',
-						theme === 'light' ? 'bg-white' : 'bg-black',
-					)}
-				>
+				<div className={cn('flex-1', theme === 'dark' ? 'bg-[#171717]' : '')}>
 					{children || <Outlet />}
 				</div>
 			</div>

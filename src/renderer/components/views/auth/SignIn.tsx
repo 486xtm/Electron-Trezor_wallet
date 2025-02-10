@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { EyeIcon } from '../../images/Icons';
 import { useNavigate } from 'react-router-dom';
 import { Loading } from '../../common/Loading';
 import { cn } from '@/lib/utils';
@@ -16,7 +15,7 @@ export const SignIn = () => {
 		const timer = setTimeout(() => {
 			setIsLoading(false); // Ensure loading state is reset
 			navigate('/main/home');
-		}, 300);
+		}, 500);
 
 		// Cleanup timeout on unmount
 		return () => clearTimeout(timer);
@@ -40,7 +39,6 @@ export const SignIn = () => {
 								type={visible ? 'password' : 'text'}
 							/>
 							<div onClick={() => setVisible(!visible)}>
-								<EyeIcon on={visible} className="cursor-pointer" />
 							</div>
 						</div>
 						<div className="flex gap-3 ml-auto">
