@@ -78,7 +78,6 @@ export const SideBar: React.FC<SideBarProps> = ({ children }) => {
 	const [tab, setTab] = useState(1);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 	return (
 		<div className="flex flex-row">
 			<div
@@ -181,7 +180,7 @@ export const SideBar: React.FC<SideBarProps> = ({ children }) => {
 				<div className="w-full flex flex-row justify-center mb-5">
 					<div className="flex flex-row gap-1">
 						{mockCoin.map((val, index) => (
-							<img src={val.img} className="w-[15px] grayscale" />
+							<img src={val.img} className="w-[15px] grayscale" key={`search_coin_${index}`} />
 						))}
 					</div>
 				</div>
@@ -200,7 +199,7 @@ export const SideBar: React.FC<SideBarProps> = ({ children }) => {
 								theme === 'dark' ? 'hover:bg-[#1d1d1d]' : '',
                 location.pathname === `/main/coin/${val.symbol}` ? 'bg-[#1d1d1d]': ''
 							)}
-              onClick={() => navigate(`/main/coin/${val.symbol}`)}
+              onClick={() => navigate(`/main/coin/${val.symbol}`, {state: val})}
 							key={`coin_${index}`}
 						>
 							<div className="flex flex-row items-center gap-4 ">
