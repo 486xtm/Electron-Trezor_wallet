@@ -140,7 +140,7 @@ export const SideBar: React.FC<SideBarProps> = ({ children }) => {
 							theme === 'dark'
 								? 'hover:bg-[#161616] hover:border-[#1d1d1d] hover:text-gray-200'
 								: '',
-							activityShow === true ? 'bg-[#252525]' : '',
+							activityShow === true ? 'bg-[#252525] text-gray-200' : '',
 						)}
 						onClick={() => setActivityShow(true)}
 					>

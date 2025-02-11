@@ -5,9 +5,17 @@ import { VscArrowSwap } from 'react-icons/vsc';
 import { AiOutlineDollarCircle } from 'react-icons/ai';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa6';
 import { IoIosMore } from 'react-icons/io';
-export const Header = ({ title = 'Dashboard' }: { title: string }) => {
+import { useNavigate, useLocation } from 'react-router-dom';
+export const Header = ({
+	title = 'Dashboard',
+	coinInfo
+}: {
+	title: string;
+	coinInfo: any;
+}) => {
 	const { theme } = useTheme();
-
+	const location = useLocation();
+	const naviage = useNavigate();
 	return (
 		<div className="flex flex-row justify-between py-2 px-4 border-b border-[#212121]">
 			<div
@@ -34,11 +42,18 @@ export const Header = ({ title = 'Dashboard' }: { title: string }) => {
 				</button>
 				{title != 'Dashboard' && (
 					<div className="bg-[#1d1d1d] rounded-full my-1 flex items-center text-gray-200">
-						<div className="flex flex-row items-center gap-2 px-4 cursor-pointer">
+						<div
+							className="flex flex-row items-center gap-2 px-4 cursor-pointer"
+							onClick={() => {naviage(`${location.pathname}/send`, {state: coinInfo})}}
+						>
 							<FaArrowUp />
 							Send
 						</div>
-						<div className="flex flex-row items-center gap-2 px-4 cursor-pointer">
+						<div
+							className="flex flex-row items-center gap-2 px-4 cursor-pointer"
+							onClick={() => {naviage(`${location.pathname}/receive`, {state: coinInfo})}}
+
+						>
 							<FaArrowDown />
 							Receive
 						</div>

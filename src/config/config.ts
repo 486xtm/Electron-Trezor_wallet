@@ -1,5 +1,5 @@
 // Constants
-export const APP_WIDTH = 1079;
+export const APP_WIDTH = 1300;
 export const APP_HEIGHT = 768;
 export const APP_FRAME = false;
 

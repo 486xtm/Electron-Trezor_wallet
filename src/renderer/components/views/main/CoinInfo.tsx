@@ -6,7 +6,6 @@ import { Header } from '../../header/header';
 import { IoIosMore, IoMdTrendingDown } from 'react-icons/io';
 import { LuSearch } from 'react-icons/lu';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
-
 export const CoinInfo = () => {
 	const { theme } = useTheme();
 	const param = useParams();
@@ -15,7 +14,7 @@ export const CoinInfo = () => {
 	const [coinTab, setCoinTab] = useState(1);
 	return (
 		<div className="flex flex-col h-screen">
-			<Header title={coinInfo.name} />
+			<Header title={coinInfo.name} coinInfo={coinInfo} />
 			<div className="px-5 pt-4 pb-10 flex flex-col flex-1 overflow-y-scroll">
 				<div className="flex gap-2 items-center">
 					<img src={coinInfo.img} className="rounded-full w-[18px] h-[18px]" />

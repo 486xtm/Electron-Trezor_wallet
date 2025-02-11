@@ -12,6 +12,10 @@ import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs';
 import { FaArrowRight } from 'react-icons/fa6';
 import { PiWallet } from 'react-icons/pi';
 import { IoMdTrendingDown } from 'react-icons/io';
+import { LuPiggyBank } from 'react-icons/lu';
+import { RiLockUnlockLine } from "react-icons/ri";
+import { FaArrowTrendUp } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 const mockCoin = [
 	{
 		img: `${PROTOCOL}://Trezor/coin/bitcoin.png`,
@@ -65,7 +69,7 @@ const mockCoin = [
 export const Home = () => {
 	const { theme, setTheme } = useTheme();
 	const { settings, setSettings } = useGlobalContext();
-
+	const navigate = useNavigate()
 	// const handleChangeTokenType = async () => {
 	// 	if (tokenType == 'XMR') {
 	// 		try {
@@ -87,7 +91,7 @@ export const Home = () => {
 
 	return (
 		<div className="flex flex-col h-screen">
-			<Header title="Dashboard" />
+			<Header title="Dashboard" coinInfo='' />
 			<div className="px-5 py-4 flex flex-col flex-1 overflow-y-scroll pb-10">
 				<div className="flex flex-row items-center justify-between mb-4">
 					<div className="flex items-center text-white text-xl gap-2">
@@ -137,7 +141,10 @@ export const Home = () => {
 											</div>
 										</div>
 									</div>
-									<div>
+									<div
+										className='cursor-pointer'
+										onClick={() => navigate(`/main/coin/${val.symbol}`, {state: val}) }
+									>
 										<FaArrowRight />
 									</div>
 								</div>
@@ -163,7 +170,7 @@ export const Home = () => {
 										</div>
 									</div>
 									<div className="w-1/3 flex justify-end">
-										<span className="text-gray-200 bg-[#2b2b2b] rounded-full py-2 px-4">
+										<span className="text-gray-200 bg-[#2b2b2b] rounded-full py-2 px-4 cursor-pointer">
 											Buy
 										</span>
 									</div>
@@ -185,6 +192,11 @@ export const Home = () => {
 					</div>
 					<div className="flex flex-row w-full gap-3 border-b border-[#212121] pb-10 mb-5">
 						<div className="w-1/3">
+							<div className="bg-[#0e3025] rounded-full w-[80px] h-[80px] flex items-center justify-center mb-5">
+								<span className="bg-[#186851] flex items-center justify-center rounded-full w-[60px] h-[60px] text-[40px] text-[#6dd9bb]">
+									<LuPiggyBank />
+								</span>
+							</div>
 							<div className="flex items-center text-white xl:text-xl text-lg">
 								Watch your money dance
 							</div>
@@ -193,6 +205,11 @@ export const Home = () => {
 							</div>
 						</div>
 						<div className="w-1/3">
+							<div className="bg-[#0e3025] rounded-full w-[80px] h-[80px] flex items-center justify-center mb-5">
+								<span className="bg-[#186851] flex items-center justify-center rounded-full w-[60px] h-[60px] text-[40px] text-[#6dd9bb]">
+									<RiLockUnlockLine />
+								</span>
+							</div>
 							<div className="flex items-center text-white xl:text-xl text-lg">
 								Lock in funds with flexibility
 							</div>
@@ -201,35 +218,56 @@ export const Home = () => {
 							</div>
 						</div>
 						<div className="w-1/3">
+							<div className="bg-[#0e3025] rounded-full w-[80px] h-[80px] flex items-center justify-center mb-5">
+								<span className="bg-[#186851] flex items-center justify-center rounded-full w-[60px] h-[60px] text-[40px] text-[#6dd9bb]">
+									<FaArrowTrendUp />
+								</span>
+							</div>
 							<div className="flex items-center text-white xl:text-xl text-lg">
 								Maximize your rewards
 							</div>
 							<div className="flex items-center xl:text-sm text-xs">
-								Soar high! Earn rewards on your rewards. Staking has never felt so good
+								Soar high! Earn rewards on your rewards. Staking has never felt
+								so good
 							</div>
 						</div>
 					</div>
-					<div className='flex flex-row justify-between items-center'>
+					<div className="flex flex-row justify-between items-center">
 						<div>
-							<div className='text-xs'>Available now for</div>
-							<div className='flex flex-row gap-1 items-center text-white'>
-								<img src={`${PROTOCOL}://Trezor/coin/ethereum.png`} className='rounded-full w-[18px] h-[18px]' />
+							<div className="text-xs">Available now for</div>
+							<div className="flex flex-row gap-1 items-center text-white">
+								<img
+									src={`${PROTOCOL}://Trezor/coin/ethereum.png`}
+									className="rounded-full w-[18px] h-[18px]"
+								/>
 								Ethereum
 							</div>
 						</div>
-						<div className='flex flex-row gap-2 items-center'>
-							<div className='py-2 px-4 bg-[#61dbb8] rounded-full text-black'>Start staking</div>
-							<div className='py-2 px-4 bg-[#252525] rounded-full text-gray-200'>Start staking</div>
+						<div className="flex flex-row gap-2 items-center">
+							<div className="py-2 px-4 bg-[#61dbb8] rounded-full text-black cursor-pointer">
+								Start staking
+							</div>
+							<div className="py-2 px-4 bg-[#252525] rounded-full text-gray-200 cursor-pointer">
+								Start staking
+							</div>
 						</div>
 					</div>
 				</div>
-				<hr className='border-[#212121] mb-5'/>
+				<hr className="border-[#212121] mb-5" />
 
-				<div className='flex flex-row items-center justify-between mb-3'>
-					<div className='text-white text-sm ml-5'>Sync & track on your phone with Trezor Suit Lite</div> 
-					<div className='flex flex-row items-center gap-2'>
-						<img src={`${PROTOCOL}://Trezor/app-store-badge.svg`} className='xl:h-[40px] h-[30px]' />
-						<img src={`${PROTOCOL}://Trezor/play-store-badge.svg`} className='xl:h-[40px] h-[30px]' />
+				<div className="flex flex-row items-center justify-between mb-3">
+					<div className="text-white text-sm ml-5">
+						Sync & track on your phone with Trezor Suit Lite
+					</div>
+					<div className="flex flex-row items-center gap-2">
+						<img
+							src={`${PROTOCOL}://Trezor/app-store-badge.svg`}
+							className="xl:h-[40px] h-[30px] cursor-pointer"
+						/>
+						<img
+							src={`${PROTOCOL}://Trezor/play-store-badge.svg`}
+							className="xl:h-[40px] h-[30px] cursor-pointer"
+						/>
 					</div>
 				</div>
 			</div>
