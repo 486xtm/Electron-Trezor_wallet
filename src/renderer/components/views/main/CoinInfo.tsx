@@ -193,12 +193,15 @@ export const CoinInfo = () => {
                 <FaArrowUp className='text-xl' />
                 <div>
                   <span className='text-gray-200'>Sent {coinInfo.symbol}</span><br/>
-                  <span className='text-sm'>15:37 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd</span>
+                  <span className='text-sm'>15:37 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd</span><br/><br/>
+                  <span className='text-sm ml-10'>Fee</span>
                 </div>
               </div>
               <div className='text-right mr-2'>
                 <span className='text-green-400'>+</span> <span className='text-gray-200'>0.07402653 {coinInfo.symbol}</span><br/>
-                <span className='text-sm'>$7,175.31</span>
+                <span className='text-sm'>$7,175.31</span><br/><br/>
+                <span className='text-sm '>-0.0002538 {coinInfo.symbol}</span><br/>
+                <span className='text-sm '>$24.6</span>
               </div>
             </div>
 

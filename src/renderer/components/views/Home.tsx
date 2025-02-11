@@ -10,8 +10,8 @@ import { GoPlus } from 'react-icons/go';
 import { MdWindow } from 'react-icons/md';
 import { BsReverseLayoutTextWindowReverse } from 'react-icons/bs';
 import { FaArrowRight } from 'react-icons/fa6';
-import { PiWallet } from "react-icons/pi";
-import { IoMdTrendingDown } from "react-icons/io";
+import { PiWallet } from 'react-icons/pi';
+import { IoMdTrendingDown } from 'react-icons/io';
 const mockCoin = [
 	{
 		img: `${PROTOCOL}://Trezor/coin/bitcoin.png`,
@@ -88,7 +88,7 @@ export const Home = () => {
 	return (
 		<div className="flex flex-col h-screen">
 			<Header title="Dashboard" />
-			<div className="px-5 py-4 flex flex-col flex-1 overflow-y-scroll">
+			<div className="px-5 py-4 flex flex-col flex-1 overflow-y-scroll pb-10">
 				<div className="flex flex-row items-center justify-between mb-4">
 					<div className="flex items-center text-white text-xl gap-2">
 						Portfolio
@@ -130,33 +130,98 @@ export const Home = () => {
 												alt="coin"
 											/>
 										</div>
-										<div className='flex flex-col text-sm '>
-											<div className='text-white'>{val.name.split(" #1")}</div>
-											<div className='flex items-center gap-2'><PiWallet/>1</div>
+										<div className="flex flex-col text-sm ">
+											<div className="text-white">{val.name.split(' #1')}</div>
+											<div className="flex items-center gap-2">
+												<PiWallet />1
+											</div>
 										</div>
 									</div>
 									<div>
 										<FaArrowRight />
 									</div>
 								</div>
-								<div><span className='text-white text-[30px] pl-2'>$0</span><span>.00</span></div>
-								<div className='text-sm mb-1 pl-2'>{val.amount} {val.symbol}</div>
-								<div className='bg-[#252525] rounded-xl p-4 flex flex-row items-center text-sm'>
-									<div className='w-1/3'>
-										Price<br/>
-										<span className='text-white'>$96,407</span>
+								<div>
+									<span className="text-white text-[30px] pl-2">$0</span>
+									<span>.00</span>
+								</div>
+								<div className="text-sm mb-1 pl-2">
+									{val.amount} {val.symbol}
+								</div>
+								<div className="bg-[#252525] rounded-xl p-4 flex flex-row items-center text-sm">
+									<div className="w-1/3">
+										Price
+										<br />
+										<span className="text-white">$96,407</span>
 									</div>
-									<div className='w-1/3 flex flex-col justify-center text-center'>
-										7d change<br/>
-										<div className='flex flex-row text-red-300 items-center justify-center gap-1'><IoMdTrendingDown/>-5.9%</div>
+									<div className="w-1/3 flex flex-col justify-center text-center">
+										7d change
+										<br />
+										<div className="flex flex-row text-red-300 items-center justify-center gap-1">
+											<IoMdTrendingDown />
+											-5.9%
+										</div>
 									</div>
-									<div className='w-1/3 flex justify-end'>
-										<span className='text-gray-200 bg-[#2b2b2b] rounded-full py-2 px-4'>Buy</span>
+									<div className="w-1/3 flex justify-end">
+										<span className="text-gray-200 bg-[#2b2b2b] rounded-full py-2 px-4">
+											Buy
+										</span>
 									</div>
 								</div>
 							</div>
 						</div>
 					))}
+				</div>
+				<div className="flex items-center text-white text-xl gap-2">
+					Stake ETH
+				</div>
+
+				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] p-5 mb-5">
+					<div className="flex items-center text-white text-xl gap-2">
+						The easiest way to earn ETH
+					</div>
+					<div className="flex items-center text-white gap-2 mb-10">
+						Stake. Earn rewards. Repeat
+					</div>
+					<div className="flex flex-row w-full gap-3 border-b border-[#212121] pb-10 mb-5">
+						<div className="w-1/3">
+							<div className="flex items-center text-white xl:text-xl text-lg">
+								Watch your money dance
+							</div>
+							<div className="flex items-center xl:text-sm text-xs">
+								Earn 3.46% APY by staking your ETH with Trezor
+							</div>
+						</div>
+						<div className="w-1/3">
+							<div className="flex items-center text-white xl:text-xl text-lg">
+								Lock in funds with flexibility
+							</div>
+							<div className="flex items-center xl:text-sm text-xs">
+								Staking locks in your funds, but you can unstake them anytime
+							</div>
+						</div>
+						<div className="w-1/3">
+							<div className="flex items-center text-white xl:text-xl text-lg">
+								Maximize your rewards
+							</div>
+							<div className="flex items-center xl:text-sm text-xs">
+								Soar high! Earn rewards on your rewards. Staking has never felt so good
+							</div>
+						</div>
+					</div>
+					<div className='flex flex-row justify-between items-center'>
+						<div>
+							<div className='text-xs'>Available now for</div>
+							<div className='flex flex-row gap-1 items-center text-white'>
+								<img src={`${PROTOCOL}://Trezor/coin/ethereum.png`} className='rounded-full w-[18px] h-[18px]' />
+								Ethereum
+							</div>
+						</div>
+						<div className='flex flex-row gap-2 items-center'>
+							<div className='py-2 px-4 bg-[#61dbb8] rounded-full text-black'>Start staking</div>
+							<div className='py-2 px-4 bg-[#252525] rounded-full text-gray-200'>Start staking</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
