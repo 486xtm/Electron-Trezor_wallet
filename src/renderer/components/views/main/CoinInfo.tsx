@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { useTheme } from '@/renderer/context/theme-context';
 import { useLocation, useParams } from 'react-router-dom';
 import { Header } from '../../header/header';
-import { IoMdTrendingDown } from 'react-icons/io';
+import { IoIosMore, IoMdTrendingDown } from 'react-icons/io';
+import { LuSearch } from 'react-icons/lu';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
 
 export const CoinInfo = () => {
 	const { theme } = useTheme();
@@ -14,7 +16,7 @@ export const CoinInfo = () => {
 	return (
 		<div className="flex flex-col h-screen">
 			<Header title={coinInfo.name} />
-			<div className="px-5 py-4 flex flex-col flex-1 overflow-y-scroll">
+			<div className="px-5 pt-4 pb-10 flex flex-col flex-1 overflow-y-scroll">
 				<div className="flex gap-2 items-center">
 					<img src={coinInfo.img} className="rounded-full w-[18px] h-[18px]" />
 					<span>
@@ -114,14 +116,17 @@ export const CoinInfo = () => {
 						<div className="flex items-center text-white text-xl mb-5">
 							Trade
 						</div>
-						<div className="border h-[100px] rounded-xl border-[#252525] bg-[#1d1d1d] p-3 flex justify-between items-center mb-[500px]">
+						<div className="border h-[100px] rounded-xl border-[#252525] bg-[#1d1d1d] p-3 flex justify-between items-center mb-10">
 							<div className="px-4 flex flex-row items-center text-sm xl:w-1/4 w-1/2">
 								<div className="w-1/3 flex items-center gap-2">
-									<img src={coinInfo.img} className='rounded-full w-[30px]' />
-                  <div>
-                    <span className='text-white font-bold'>{coinInfo.name.split(" #1")}</span><br/>
-                    {coinInfo.symbol}
-                  </div>
+									<img src={coinInfo.img} className="rounded-full w-[30px]" />
+									<div>
+										<span className="text-white font-bold">
+											{coinInfo.name.split(' #1')}
+										</span>
+										<br />
+										{coinInfo.symbol}
+									</div>
 								</div>
 								<div className="w-1/3 pl-5">
 									Price
@@ -149,6 +154,54 @@ export const CoinInfo = () => {
 								</div>
 							</div>
 						</div>
+
+						<div className="flex flex-row items-center justify-between mb-10">
+							<div className="flex items-center text-white text-xl gap-2">
+								Transactions
+							</div>
+							<div className='flex flex-row gap-2'>
+								<div className="bg-[#1d1d1d] rounded-full py-2 flex items-center px-2 cursor-pointer text-white">
+									<LuSearch />
+								</div>
+								<div className="bg-[#1d1d1d] rounded-full py-2 flex items-center px-2 cursor-pointer">
+									<IoIosMore />
+								</div>
+							</div>
+						</div>
+
+            <div className='flex flex-row justify-between text-sm mb-5'>
+              <span>February 6, 2025</span>
+              <span>+$25,818.59</span>
+            </div>
+
+						<div className="border rounded-xl border-[#252525] bg-[#1d1d1d] px-3 py-4 mb-2 flex flex-row items-center justify-between">
+              <div className='flex flex-row items-center gap-4'>
+                <FaArrowDown className='text-xl' />
+                <div>
+                  <span className='text-gray-200'>Received {coinInfo.symbol}</span><br/>
+                  <span className='text-sm'>21:35 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd</span>
+                </div>
+              </div>
+              <div className='text-right mr-2'>
+                <span className='text-green-400'>+</span> <span className='text-gray-200'>0.33879329 {coinInfo.symbol}</span><br/>
+                <span className='text-sm'>$33,018.50</span>
+              </div>
+            </div>
+
+            <div className="border rounded-xl border-[#252525] bg-[#1d1d1d] px-3 py-4 mb-2 flex flex-row items-center justify-between">
+              <div className='flex flex-row items-center gap-4'>
+                <FaArrowUp className='text-xl' />
+                <div>
+                  <span className='text-gray-200'>Sent {coinInfo.symbol}</span><br/>
+                  <span className='text-sm'>15:37 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd</span>
+                </div>
+              </div>
+              <div className='text-right mr-2'>
+                <span className='text-green-400'>+</span> <span className='text-gray-200'>0.07402653 {coinInfo.symbol}</span><br/>
+                <span className='text-sm'>$7,175.31</span>
+              </div>
+            </div>
+
 					</>
 				)}
 			</div>
