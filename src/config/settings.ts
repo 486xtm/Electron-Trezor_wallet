@@ -49,7 +49,7 @@ export const DEFAULT_SETTINGS: SettingsType = {
 	balance: 0,
 	address: '',
 	isMaximized: false,
-	theme: 'light',
+	theme: 'dark',
 };
 
 // see src/main/keyboard-shortcuts.ts

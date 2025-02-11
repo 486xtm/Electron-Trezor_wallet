@@ -57,7 +57,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 				>
 					<div
 						className="flex z-10 text-xs items-center gap-1 pl-2"
-						onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+						// onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 					>
 						<img
 							src={`${PROTOCOL}://Trezor/icon/trayLin.png`}

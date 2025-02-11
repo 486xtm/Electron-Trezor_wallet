@@ -4,17 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@/renderer/context/theme-context';
 import { cn } from '@/lib/utils';
 import { IoIosArrowBack, IoIosMore } from 'react-icons/io';
-import { IoSwapHorizontalOutline } from 'react-icons/io5';
-import { PiCalendar, PiBroadcast } from 'react-icons/pi';
-import { FiPlus } from 'react-icons/fi';
-import { LuCircleDashed } from 'react-icons/lu';
 export const Receive = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { theme } = useTheme();
 	const coinInfo = location.state;
-	const [maxToogle, setMaxToggle] = useState(false);
-	const [fee, setFee] = useState(1);
 	return (
 		<div className="flex flex-col h-screen">
 			<div className="flex flex-row justify-between py-1 px-4 border-b border-[#212121] mb-3">
@@ -49,13 +43,52 @@ export const Receive = () => {
 					Receive
 				</div>
 
-        <div className='border rounded-xl border-[#252525] bg-[#1d1d1d] py-3 px-5 flex flex-row items-center justify-between'>
-          <div className='flex flex-col'>
-            <div className='text-sm'>Fresh address</div>
-            <div className='text-white text-[50px]'>bc1q56ll3jc3ze</div>
-          </div>
-        </div>
-				
+				<div className="border rounded-xl border-[#252525] bg-[#1d1d1d] py-3 px-5 flex flex-row items-center justify-between mb-5">
+					<div className="flex flex-col">
+						<div className="text-sm">Fresh address</div>
+						<div
+							className="text-white text-[40px]"
+							style={{
+								WebkitMaskImage:
+									'linear-gradient(to right, black 10%, transparent)',
+							}}
+						>
+							bc1q56ll3jc3ze
+						</div>
+					</div>
+					<div className="text-black bg-[#d3ac4c] rounded-full py-3 px-5 cursor-pointer">
+						Generate unverified address
+					</div>
+				</div>
+
+				<div className="border rounded-xl border-[#252525] bg-[#1d1d1d] py-3 mb-5">
+					<div className="flex flex-row items-center justify-between px-5  pb-3">
+						<span>Address</span>
+						<span>Total received</span>
+					</div>
+					{[{address: "bc1qk15ce54n23e7", amount: "0.33879329"},
+            {address: "bc1qk15ce54n23e7", amount: "0.45723939"},
+            {address: "bc1qk15ce54n23e7", amount: "0.83618746"},
+            {address: "bc1qk15ce54n23e7", amount: "2.95014624"},
+            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
+            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
+            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
+            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
+            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
+          ].map((val, index) => (
+						<div className="flex flex-row items-center justify-between px-5 py-3 border-[#252525] border-t text-white">
+							<div
+								style={{
+									WebkitMaskImage:
+										'linear-gradient(to right, black 10%, transparent)',
+								}}
+							>
+								{val.address}
+							</div>
+							<div>{val.amount} {coinInfo.symbol}</div>
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	);

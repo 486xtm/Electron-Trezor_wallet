@@ -6,7 +6,7 @@ import { useTheme } from '@/renderer/context/theme-context';
 
 export const SignIn = () => {
 	const [visible, setVisible] = useState(true);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const { theme } = useTheme();
 	const navigate = useNavigate();
 
