@@ -1,2 +1,2 @@
-export * from './Settings';
+export * from './setting';
 export * from './CoinInfo';

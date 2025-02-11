@@ -172,15 +172,15 @@ export const Home = () => {
 						</div>
 					))}
 				</div>
-				<div className="flex items-center text-white text-xl gap-2">
+				<div className="flex items-center text-white text-xl mb-5">
 					Stake ETH
 				</div>
 
-				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] p-5 mb-5">
-					<div className="flex items-center text-white text-xl gap-2">
+				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] p-5 mb-10">
+					<div className="flex items-center text-white text-xl ">
 						The easiest way to earn ETH
 					</div>
-					<div className="flex items-center text-white gap-2 mb-10">
+					<div className="flex items-center text-white  mb-10">
 						Stake. Earn rewards. Repeat
 					</div>
 					<div className="flex flex-row w-full gap-3 border-b border-[#212121] pb-10 mb-5">
@@ -221,6 +221,15 @@ export const Home = () => {
 							<div className='py-2 px-4 bg-[#61dbb8] rounded-full text-black'>Start staking</div>
 							<div className='py-2 px-4 bg-[#252525] rounded-full text-gray-200'>Start staking</div>
 						</div>
+					</div>
+				</div>
+				<hr className='border-[#212121] mb-5'/>
+
+				<div className='flex flex-row items-center justify-between mb-3'>
+					<div className='text-white text-sm ml-5'>Sync & track on your phone with Trezor Suit Lite</div> 
+					<div className='flex flex-row items-center gap-2'>
+						<img src={`${PROTOCOL}://Trezor/app-store-badge.svg`} className='xl:h-[40px] h-[30px]' />
+						<img src={`${PROTOCOL}://Trezor/play-store-badge.svg`} className='xl:h-[40px] h-[30px]' />
 					</div>
 				</div>
 			</div>
