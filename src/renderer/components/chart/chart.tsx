@@ -57,9 +57,9 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 
   const getBarColor = (date: string, type: 'received' | 'sent') => {
     if (!hoveredDate || hoveredDate === date) {
-      return type === 'received' ? '#ef4444' : '#22c55e';
+      return type === 'received' ? '#22c55e' : '#ef4444';
     }
-    return '#9ca3af'; // gray color for non-hovered bars
+    return type === 'received' ? '#aeaeae' : '#e0e0e0';
   };
 
   return (
@@ -118,3 +118,9 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
     </div>
   );
 };
+
+
+
+
+
+
