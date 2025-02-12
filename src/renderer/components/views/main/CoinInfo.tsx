@@ -6,12 +6,21 @@ import { Header } from '../../header/header';
 import { IoIosMore, IoMdTrendingDown } from 'react-icons/io';
 import { LuSearch } from 'react-icons/lu';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
+import { BarChart } from '../../chart/chart';
 export const CoinInfo = () => {
 	const { theme } = useTheme();
 	const param = useParams();
 	const location = useLocation();
 	const coinInfo = location.state;
 	const [coinTab, setCoinTab] = useState(1);
+	const sampleData = [
+		{ date: 'Aug 2024', received: 250, sent: 180 },
+		{ date: 'Sep 2024', received: 320, sent: 220 },
+		{ date: 'Oct 2024', received: 280, sent: 300 },
+		{ date: 'Nov 2024', received: 420, sent: 350 },
+		{ date: 'Dec 2024', received: 380, sent: 290 },
+		{ date: 'Jan 2025', received: 450, sent: 400 },
+	];
 	return (
 		<div className="flex flex-col h-screen">
 			<Header title={coinInfo.name} coinInfo={coinInfo} />
@@ -77,7 +86,19 @@ export const CoinInfo = () => {
 
 				{coinTab === 1 && (
 					<>
-						<div className="border rounded-xl border-[#252525] bg-[#1d1d1d] p-3 mb-5"></div>
+						<div className="flex flex-row items-center text-sm mb-7 mt-2">
+							<div className="flex flex-row border-r gap-2 mr-2 pr-2">
+								<span>1D</span>
+								<span>1W</span>
+								<span>1M</span>
+								<span>1Y</span>
+								<span className="text-white">ALL</span>
+							</div>
+							<div>Range</div>
+						</div>
+						<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] mb-5 py-10">
+							<BarChart data={sampleData} type='coin' symbol={coinInfo.symbol} />
+						</div>
 						<div className="flex gap-4 text-sm mb-5">
 							<div className="border h-full rounded-xl border-[#252525] bg-[#1d1d1d] p-3 w-1/3">
 								<span className="text-xs">ALL</span>
@@ -158,7 +179,7 @@ export const CoinInfo = () => {
 							<div className="flex items-center text-white text-xl gap-2">
 								Transactions
 							</div>
-							<div className='flex flex-row gap-2'>
+							<div className="flex flex-row gap-2">
 								<div className="bg-[#1d1d1d] rounded-full py-2 flex items-center px-2 cursor-pointer text-white">
 									<LuSearch />
 								</div>
@@ -168,42 +189,62 @@ export const CoinInfo = () => {
 							</div>
 						</div>
 
-            <div className='flex flex-row justify-between text-sm mb-5'>
-              <span>February 6, 2025</span>
-              <span>+$25,818.59</span>
-            </div>
+						<div className="flex flex-row justify-between text-sm mb-5">
+							<span>February 6, 2025</span>
+							<span>+$25,818.59</span>
+						</div>
 
 						<div className="border rounded-xl border-[#252525] bg-[#1d1d1d] px-3 py-4 mb-2 flex flex-row items-center justify-between">
-              <div className='flex flex-row items-center gap-4'>
-                <FaArrowDown className='text-xl' />
-                <div>
-                  <span className='text-gray-200'>Received {coinInfo.symbol}</span><br/>
-                  <span className='text-sm'>21:35 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd</span>
-                </div>
-              </div>
-              <div className='text-right mr-2'>
-                <span className='text-green-400'>+</span> <span className='text-gray-200'>0.33879329 {coinInfo.symbol}</span><br/>
-                <span className='text-sm'>$33,018.50</span>
-              </div>
-            </div>
+							<div className="flex flex-row items-center gap-4">
+								<FaArrowDown className="text-xl" />
+								<div>
+									<span className="text-gray-200">
+										Received {coinInfo.symbol}
+									</span>
+									<br />
+									<span className="text-sm">
+										21:35 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd
+									</span>
+								</div>
+							</div>
+							<div className="text-right mr-2">
+								<span className="text-green-400">+</span>{' '}
+								<span className="text-gray-200">
+									0.33879329 {coinInfo.symbol}
+								</span>
+								<br />
+								<span className="text-sm">$33,018.50</span>
+							</div>
+						</div>
 
-            <div className="border rounded-xl border-[#252525] bg-[#1d1d1d] px-3 py-4 mb-2 flex flex-row items-center justify-between">
-              <div className='flex flex-row items-center gap-4'>
-                <FaArrowUp className='text-xl' />
-                <div>
-                  <span className='text-gray-200'>Sent {coinInfo.symbol}</span><br/>
-                  <span className='text-sm'>15:37 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd</span><br/><br/>
-                  <span className='text-sm ml-10'>Fee</span>
-                </div>
-              </div>
-              <div className='text-right mr-2'>
-                <span className='text-green-400'>+</span> <span className='text-gray-200'>0.07402653 {coinInfo.symbol}</span><br/>
-                <span className='text-sm'>$7,175.31</span><br/><br/>
-                <span className='text-sm '>-0.0002538 {coinInfo.symbol}</span><br/>
-                <span className='text-sm '>$24.6</span>
-              </div>
-            </div>
-
+						<div className="border rounded-xl border-[#252525] bg-[#1d1d1d] px-3 py-4 mb-2 flex flex-row items-center justify-between">
+							<div className="flex flex-row items-center gap-4">
+								<FaArrowUp className="text-xl" />
+								<div>
+									<span className="text-gray-200">Sent {coinInfo.symbol}</span>
+									<br />
+									<span className="text-sm">
+										15:37 bc1qk5ce5423e7h34xexgk54l6a6lmsdjx6pnkyd
+									</span>
+									<br />
+									<br />
+									<span className="text-sm ml-10">Fee</span>
+								</div>
+							</div>
+							<div className="text-right mr-2">
+								<span className="text-green-400">+</span>{' '}
+								<span className="text-gray-200">
+									0.07402653 {coinInfo.symbol}
+								</span>
+								<br />
+								<span className="text-sm">$7,175.31</span>
+								<br />
+								<br />
+								<span className="text-sm ">-0.0002538 {coinInfo.symbol}</span>
+								<br />
+								<span className="text-sm ">$24.6</span>
+							</div>
+						</div>
 					</>
 				)}
 			</div>

@@ -112,7 +112,7 @@ export const Home = () => {
 					</div>
 				</div>
 				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] mb-5 pb-10">
-					<div className="flex flex-row items-center justify-between px-3 border-b border-[#252525] mb-10">
+					<div className="flex flex-row items-center justify-between px-5 border-b border-[#252525] mb-10">
 						<div>
 							<span className="text-[50px] text-white">$0</span>
 							<span>.00</span>
@@ -128,7 +128,7 @@ export const Home = () => {
 							<div>Range</div>
 						</div>
 					</div>
-					<BarChart data={sampleData} />
+					<BarChart data={sampleData} type='dashboard' symbol='' />
 				</div>
 
 				<div className="flex flex-row items-center justify-between mb-4">

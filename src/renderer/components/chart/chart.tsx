@@ -20,6 +20,8 @@ interface TransactionData {
 
 interface BarChartProps {
 	data: TransactionData[];
+  symbol: string,
+  type: string
 }
 
 const CustomTooltip = ({ active, payload, label, data }: any) => {
@@ -28,10 +30,10 @@ const CustomTooltip = ({ active, payload, label, data }: any) => {
 		const isLastMonth = label === data[data.length - 1].date;
 
 		return (
-			<div className={cn('', isLastMonth && winData.width <1368 ? 'absolute ml-[801px] -mt-[150px]' : '')}>
+			<div className={cn('', isLastMonth && winData.width <1368 ? 'absolute ml-[800px] -mt-[150px]' : '')}>
 				<div
 					className={cn(
-						'bg-[#3b3b3b] text-white rounded-md shadow-lg py-3 px-2 -ml-[93px]',
+						'bg-[#3b3b3b] text-white rounded-md shadow-lg py-3 px-2 -ml-[92px]',
 					)}
 				>
 					<p className="text-xs font-medium mb-2 ml-2">{label}</p>
@@ -57,18 +59,18 @@ const CustomTooltip = ({ active, payload, label, data }: any) => {
 				{/* Solid line connecting tooltip to bar */}
 				<div
 					className={cn(
-						'w-[1px] h-[320px] bg-[#252525] absolute -ml-[11px]',
+						'w-[1px] h-[320px] bg-[#252525] absolute -ml-[10px]',
 					)}
 				></div>
 				{/* Triangle pointer */}
-				<div className="w-[15px] h-[15px] bg-[#3b3b3b] rotate-45 absolute -bottom-2 left-0 -ml-[18px] right-0 mx-auto"></div>
+				<div className="w-[15px] h-[15px] bg-[#3b3b3b] rotate-45 absolute -bottom-2 left-0 -ml-[17px] right-0 mx-auto"></div>
 			</div>
 		);
 	}
 	return null;
 };
 
-export const BarChart: React.FC<BarChartProps> = ({ data }) => {
+export const BarChart: React.FC<BarChartProps> = ({ data, symbol, type = 'dashboard' }) => {
 	const [hoveredDate, setHoveredDate] = useState<string | null>(null);
 
 	const getBarColor = (date: string, type: 'received' | 'sent') => {
@@ -109,7 +111,7 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 					/>
 					<XAxis dataKey="date" axisLine={false} tickLine={false} dy={10} />
 					<YAxis
-						tickFormatter={(value) => `$${value.toLocaleString()}`}
+						tickFormatter={(value) => `${ type == 'dashboard' ? '$': ''}${value.toLocaleString()} ${type !== 'dashboard' ? symbol : ''}`}
 						orientation="right"
 						axisLine={false}
 						tickLine={false}
