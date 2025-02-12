@@ -87,10 +87,16 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
             strokeDasharray="0"
             stroke="#252525"
           />
-          <XAxis dataKey="date" />
+          <XAxis 
+            dataKey="date" 
+            axisLine={false}
+            tickLine={false}
+          />
           <YAxis
             tickFormatter={(value) => `$${value.toLocaleString()}`}
             orientation="right"
+            axisLine={false}
+            tickLine={false}
           />
           <Tooltip content={<CustomTooltip />} />
           <Legend />
