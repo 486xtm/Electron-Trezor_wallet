@@ -46,7 +46,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 					</div>
 				</div>
 				{/* Solid line connecting tooltip to bar */}
-				<div className="w-[2px] h-[320px] bg-[#252525] absolute -ml-[11px]"></div>
+				<div className="w-[1px] h-[320px] bg-[#252525] absolute -ml-[11px]"></div>
 				{/* Triangle pointer */}
 				<div className="w-[15px] h-[15px] bg-[#3b3b3b] rotate-45 absolute -bottom-2 left-0 -ml-[18px] right-0 mx-auto"></div>
 			</div>
@@ -66,7 +66,7 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 	};
 
 	return (
-		<div className="w-full h-[300px]">
+		<div className="w-full h-[300px] text-sm">
 			<ResponsiveContainer width="100%" height="100%">
 				<RechartsBarChart
 					data={data}
@@ -91,13 +91,13 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 						strokeDasharray="0"
 						stroke="#252525"
 					/>
-					<XAxis dataKey="date" axisLine={false} tickLine={false} />
+					<XAxis dataKey="date" axisLine={false} tickLine={false} dy={10}/>
 					<YAxis
 						tickFormatter={(value) => `$${value.toLocaleString()}`}
 						orientation="right"
 						axisLine={false}
 						tickLine={false}
-            
+            dx={10}
 					/>
 					<Tooltip
 						content={<CustomTooltip />}
