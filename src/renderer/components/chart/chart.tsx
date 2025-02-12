@@ -24,24 +24,22 @@ interface BarChartProps {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-3">
-        <p className="text-sm font-medium text-gray-900 mb-2">{label}</p>
-        <div className="space-y-1">
-          <div className="flex justify-between items-center">
+      <div className="bg-[#3b3b3b] text-white rounded-md shadow-lg py-3 px-2">
+        <p className="text-xs font-medium mb-2 ml-2">{label}</p>
+        <div className="w-[150px] py-1 px-2 rounded-sm bg-[#575759]">
+          <div className="flex justify-between items-center mb-2">
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
-              <span className="text-xs text-gray-600">Received</span>
+              <span className="text-xs">Received</span>
             </div>
-            <span className="text-xs font-medium text-gray-900">
+            <span className="text-xs font-medium">
               ${payload[0].value.toLocaleString()}
             </span>
           </div>
           <div className="flex justify-between items-center">
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-              <span className="text-xs text-gray-600">Sent</span>
+              <span className="text-xs">Sent</span>
             </div>
-            <span className="text-xs font-medium text-gray-900">
+            <span className="text-xs font-medium">
               ${payload[1].value.toLocaleString()}
             </span>
           </div>
