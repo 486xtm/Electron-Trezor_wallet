@@ -81,7 +81,12 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
           }}
           onMouseLeave={() => setHoveredDate(null)}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid 
+            horizontal={true} 
+            vertical={false} 
+            strokeDasharray="0"
+            stroke="#252525"
+          />
           <XAxis dataKey="date" />
           <YAxis
             tickFormatter={(value) => `$${value.toLocaleString()}`}
