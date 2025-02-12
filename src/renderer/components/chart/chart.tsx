@@ -25,7 +25,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 	if (active && payload && payload.length) {
 		return (
 			<div>
-				<div className="bg-[#3b3b3b] text-white rounded-md shadow-lg py-3 px-2 -ml-[100px]">
+				<div className="bg-[#3b3b3b] text-white rounded-md shadow-lg py-3 px-2 -ml-[94px]">
 					<p className="text-xs font-medium mb-2 ml-2">{label}</p>
 					<div className="w-[150px] py-1 px-2 rounded-sm bg-[#575759]">
 						<div className="flex justify-between items-center mb-2">
@@ -46,8 +46,10 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 						</div>
 					</div>
 				</div>
-        <div className='w-[15px] h-[15px] bg-[#3b3b3b] rotate-45 absolute -bottom-2 left-0 -ml-[25px] right-0 mx-auto'>
-        </div>
+				{/* Solid line connecting tooltip to bar */}
+				<div className="w-[2px] h-[320px] bg-[#252525] absolute -ml-[12px]"></div>
+				{/* Triangle pointer */}
+				<div className="w-[15px] h-[15px] bg-[#3b3b3b] rotate-45 absolute -bottom-2 left-0 -ml-[19px] right-0 mx-auto"></div>
 			</div>
 		);
 	}
@@ -102,7 +104,6 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 						cursor={{ fill: 'transparent' }}
 						position={{ y: -150 }}
 					/>
-					<Legend />
 					<Bar dataKey="received" name="Received" radius={[4, 4, 0, 0]}>
 						{data.map((entry) => (
 							<Cell

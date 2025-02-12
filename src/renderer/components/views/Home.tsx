@@ -111,7 +111,7 @@ export const Home = () => {
 						<IoIosMore />
 					</div>
 				</div>
-				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] mb-5">
+				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] mb-5 pb-10">
 					<div className="flex flex-row items-center justify-between px-3 border-b border-[#252525] mb-10">
 						<div>
 							<span className="text-[50px] text-white">$0</span>
