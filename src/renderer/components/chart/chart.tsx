@@ -76,6 +76,7 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 						bottom: 5,
 					}}
 					barSize={10}
+          barGap={0}
 					onMouseMove={(state: any) => {
 						if (state?.activePayload) {
 							setHoveredDate(state.activePayload[0].payload.date);
