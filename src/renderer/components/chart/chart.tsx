@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { cn } from '@/lib/utils';
 import {
 	BarChart as RechartsBarChart,
 	Bar,
@@ -9,6 +10,7 @@ import {
 	ResponsiveContainer,
 	Cell,
 } from 'recharts';
+import {useWindowSize} from '../common/useWindowSize';
 
 interface TransactionData {
 	date: string;
@@ -20,11 +22,18 @@ interface BarChartProps {
 	data: TransactionData[];
 }
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label, data }: any) => {
+  const winData = useWindowSize();
 	if (active && payload && payload.length) {
+		const isLastMonth = label === data[data.length - 1].date;
+
 		return (
-			<div>
-				<div className="bg-[#3b3b3b] text-white rounded-md shadow-lg py-3 px-2 -ml-[93px]">
+			<div className={cn('', isLastMonth && winData.width <1368 ? 'absolute ml-[801px] -mt-[150px]' : '')}>
+				<div
+					className={cn(
+						'bg-[#3b3b3b] text-white rounded-md shadow-lg py-3 px-2 -ml-[93px]',
+					)}
+				>
 					<p className="text-xs font-medium mb-2 ml-2">{label}</p>
 					<div className="w-[150px] py-1 px-2 rounded-sm bg-[#575759]">
 						<div className="flex justify-between items-center mb-2">
@@ -46,7 +55,11 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 					</div>
 				</div>
 				{/* Solid line connecting tooltip to bar */}
-				<div className="w-[1px] h-[320px] bg-[#252525] absolute -ml-[11px]"></div>
+				<div
+					className={cn(
+						'w-[1px] h-[320px] bg-[#252525] absolute -ml-[11px]',
+					)}
+				></div>
 				{/* Triangle pointer */}
 				<div className="w-[15px] h-[15px] bg-[#3b3b3b] rotate-45 absolute -bottom-2 left-0 -ml-[18px] right-0 mx-auto"></div>
 			</div>
@@ -77,13 +90,16 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 						bottom: 5,
 					}}
 					barSize={10}
-          barGap={0}
+					barGap={0}
 					onMouseMove={(state: any) => {
 						if (state?.activePayload) {
-							setHoveredDate(state.activePayload[0].payload.date);
+							const hoveredDate = state.activePayload[0].payload.date;
+							setHoveredDate(hoveredDate);
 						}
 					}}
-					onMouseLeave={() => setHoveredDate(null)}
+					onMouseLeave={() => {
+						setHoveredDate(null);
+					}}
 				>
 					<CartesianGrid
 						horizontal={true}
@@ -91,20 +107,20 @@ export const BarChart: React.FC<BarChartProps> = ({ data }) => {
 						strokeDasharray="0"
 						stroke="#252525"
 					/>
-					<XAxis dataKey="date" axisLine={false} tickLine={false} dy={10}/>
+					<XAxis dataKey="date" axisLine={false} tickLine={false} dy={10} />
 					<YAxis
 						tickFormatter={(value) => `$${value.toLocaleString()}`}
 						orientation="right"
 						axisLine={false}
 						tickLine={false}
-            dx={10}
+						dx={10}
 					/>
 					<Tooltip
-						content={<CustomTooltip />}
+						content={<CustomTooltip data={data} />}
 						cursor={{ fill: 'transparent' }}
 						position={{ y: -150 }}
 					/>
-					<Bar dataKey="received" name="Received" radius={[4, 4, 0, 0]} >
+					<Bar dataKey="received" name="Received" radius={[4, 4, 0, 0]}>
 						{data.map((entry) => (
 							<Cell
 								key={`received-${entry.date}`}
