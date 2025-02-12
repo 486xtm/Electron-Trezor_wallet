@@ -1,8 +1,8 @@
 {
 	"name": "electron-hotplate",
-	"productName": "monero-gui-wallet",
-	"appId": "com.lacymorrow.monero",
-	"version": "4.6.0",
+	"productName": "Trezor-Suite",
+	"appId": "com.lacymorrow.trezor",
+	"version": "25.12.0",
 	"description": "A batteries-included Electron boilerplate.",
 	"license": "CC-BY-NC-SA-4.0",
 	"copyright": "Copyright © Lacy Morrow",
@@ -244,8 +244,8 @@
 		"webpack-merge": "^6.0.1"
 	},
 	"build": {
-		"productName": "monero-gui-wallet",
-		"appId": "com.lacymorrow.monero",
+		"productName": "Trezor-Suite",
+		"appId": "com.lacymorrow.trezor",
 		"asar": true,
 		"asarUnpack": "**\\*.{node,dll}",
 		"files": [
@@ -305,13 +305,13 @@
 		"nsis": {
 			"unicode": false,
 			"artifactName": "${productName}-${version}.${ext}",
-			"uninstallDisplayName": "monero wallet"
+			"uninstallDisplayName": "trezor wallet"
 		},
 		"appx": {
-			"applicationId": "monero-gui-wallet",
+			"applicationId": "Trezor-Suite",
 			"artifactName": "${productName}.${ext}",
 			"backgroundColor": "#5500ff",
-			"displayName": "Monero-gui-wallet",
+			"displayName": "Trezor-Suite",
 			"identityName": "2886Fly5.ElectronHotplate",
 			"publisher": "CN=C53C0091-1EEB-40B4-8537-082E06A4D328",
 			"publisherDisplayName": "Fly5",
