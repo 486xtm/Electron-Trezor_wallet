@@ -16,6 +16,7 @@ import { LuPiggyBank } from 'react-icons/lu';
 import { RiLockUnlockLine } from 'react-icons/ri';
 import { FaArrowTrendUp } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
+import {BarChart} from '../chart/chart';
 const mockCoin = [
 	{
 		img: `${PROTOCOL}://Trezor/coin/bitcoin.png`,
@@ -65,6 +66,14 @@ const mockCoin = [
 		amount: '0',
 		symbol: 'DOGE',
 	},
+];
+const sampleData = [
+  { date: 'Aug 2024', received: 250000, sent: 180000 },
+  { date: 'Sep 2024', received: 320000, sent: 220000 },
+  { date: 'Oct 2024', received: 280000, sent: 300000 },
+  { date: 'Nov 2024', received: 420000, sent: 350000 },
+  { date: 'Dec 2024', received: 380000, sent: 290000 },
+  { date: 'Jan 2025', received: 450000, sent: 400000 },
 ];
 export const Home = () => {
 	const { theme, setTheme } = useTheme();
@@ -119,6 +128,7 @@ export const Home = () => {
 							<div>Range</div>
 						</div>
 					</div>
+					<BarChart data={sampleData} />
 				</div>
 
 				<div className="flex flex-row items-center justify-between mb-4">
