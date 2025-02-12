@@ -13,8 +13,8 @@ import { FaArrowRight } from 'react-icons/fa6';
 import { PiWallet } from 'react-icons/pi';
 import { IoMdTrendingDown } from 'react-icons/io';
 import { LuPiggyBank } from 'react-icons/lu';
-import { RiLockUnlockLine } from "react-icons/ri";
-import { FaArrowTrendUp } from "react-icons/fa6";
+import { RiLockUnlockLine } from 'react-icons/ri';
+import { FaArrowTrendUp } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 const mockCoin = [
 	{
@@ -69,7 +69,7 @@ const mockCoin = [
 export const Home = () => {
 	const { theme, setTheme } = useTheme();
 	const { settings, setSettings } = useGlobalContext();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	// const handleChangeTokenType = async () => {
 	// 	if (tokenType == 'XMR') {
 	// 		try {
@@ -91,7 +91,7 @@ export const Home = () => {
 
 	return (
 		<div className="flex flex-col h-screen">
-			<Header title="Dashboard" coinInfo='' />
+			<Header title="Dashboard" coinInfo="" />
 			<div className="px-5 py-4 flex flex-col flex-1 overflow-y-scroll pb-10">
 				<div className="flex flex-row items-center justify-between mb-4">
 					<div className="flex items-center text-white text-xl gap-2">
@@ -102,8 +102,23 @@ export const Home = () => {
 						<IoIosMore />
 					</div>
 				</div>
-				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] h-[300px] mb-5">
-					aaa
+				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] mb-5">
+					<div className="flex flex-row items-center justify-between px-3 border-b border-[#252525] mb-10">
+						<div>
+							<span className="text-[50px] text-white">$0</span>
+							<span>.00</span>
+						</div>
+						<div className='flex flex-row items-center text-sm'>
+							<div className='flex flex-row border-r gap-2 mr-2 pr-2'>
+								<span>1D</span>
+								<span>1W</span>
+								<span>1M</span>
+								<span>1Y</span>
+								<span className='text-white'>ALL</span>
+							</div>
+							<div>Range</div>
+						</div>
+					</div>
 				</div>
 
 				<div className="flex flex-row items-center justify-between mb-4">
@@ -142,8 +157,10 @@ export const Home = () => {
 										</div>
 									</div>
 									<div
-										className='cursor-pointer'
-										onClick={() => navigate(`/main/coin/${val.symbol}`, {state: val}) }
+										className="cursor-pointer"
+										onClick={() =>
+											navigate(`/main/coin/${val.symbol}`, { state: val })
+										}
 									>
 										<FaArrowRight />
 									</div>

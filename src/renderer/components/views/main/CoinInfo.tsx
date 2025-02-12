@@ -116,8 +116,8 @@ export const CoinInfo = () => {
 							Trade
 						</div>
 						<div className="border h-[100px] rounded-xl border-[#252525] bg-[#1d1d1d] p-3 flex justify-between items-center mb-10">
-							<div className="px-4 flex flex-row items-center text-sm xl:w-1/4 w-1/2">
-								<div className="w-1/3 flex items-center gap-2">
+							<div className="px-4 flex flex-row items-center text-sm xl:w-1/3 w-1/2">
+								<div className="w-1/2 flex items-center gap-2">
 									<img src={coinInfo.img} className="rounded-full w-[30px]" />
 									<div>
 										<span className="text-white font-bold">
@@ -127,12 +127,12 @@ export const CoinInfo = () => {
 										{coinInfo.symbol}
 									</div>
 								</div>
-								<div className="w-1/3 pl-5">
+								<div className="w-1/4">
 									Price
 									<br />
 									<span className="text-white">$96,407</span>
 								</div>
-								<div className="w-1/3 flex flex-col justify-center text-center">
+								<div className="w-1/4 flex flex-col justify-center text-center">
 									7d change
 									<br />
 									<div className="flex flex-row text-red-300 items-center justify-center gap-1">
