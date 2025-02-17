@@ -17,86 +17,13 @@ import { RiLockUnlockLine } from 'react-icons/ri';
 import { FaArrowTrendUp } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import {BarChart} from '../chart/chart';
-const mockCoin = [
-	{
-		img: `${PROTOCOL}://Trezor/coin/bitcoin.png`,
-		name: 'Bitcoin #1',
-		amount: '0',
-		symbol: 'BTC',
-	},
-	{
-		img: `${PROTOCOL}://Trezor/coin/ethereum.png`,
-		name: 'Ethereum #1',
-		amount: '0',
-		symbol: 'ETH',
-	},
-	{
-		img: `${PROTOCOL}://Trezor/coin/polygon.png`,
-		name: 'Polygon PoS #1',
-		amount: '0',
-		symbol: 'POL',
-	},
-	{
-		img: `${PROTOCOL}://Trezor/coin/solana.png`,
-		name: 'Solana #1',
-		amount: '0',
-		symbol: 'SOL',
-	},
-	{
-		img: `${PROTOCOL}://Trezor/coin/cardano.webp`,
-		name: 'Cardano #1',
-		amount: '0',
-		symbol: 'ADA',
-	},
-	{
-		img: `${PROTOCOL}://Trezor/coin/xrp.png`,
-		name: 'XRP #1',
-		amount: '0',
-		symbol: 'XRP',
-	},
-	{
-		img: `${PROTOCOL}://Trezor/coin/bitcoincash.png`,
-		name: 'Bitcoin Cash #1',
-		amount: '0',
-		symbol: 'BCH',
-	},
-	{
-		img: `${PROTOCOL}://Trezor/coin/doge.svg`,
-		name: 'Dogecoin #1',
-		amount: '0',
-		symbol: 'DOGE',
-	},
-];
-const sampleData = [
-  { date: 'Aug 2024', received: 250000, sent: 180000 },
-  { date: 'Sep 2024', received: 320000, sent: 220000 },
-  { date: 'Oct 2024', received: 280000, sent: 300000 },
-  { date: 'Nov 2024', received: 420000, sent: 350000 },
-  { date: 'Dec 2024', received: 380000, sent: 290000 },
-  { date: 'Jan 2025', received: 450000, sent: 400000 },
-];
 export const Home = () => {
 	const { theme, setTheme } = useTheme();
 	const { settings, setSettings } = useGlobalContext();
 	const navigate = useNavigate();
-	// const handleChangeTokenType = async () => {
-	// 	if (tokenType == 'XMR') {
-	// 		try {
-	// 			const res = await fetch(
-	// 				`https://api.coingecko.com/api/v3/simple/price?ids=monero&vs_currencies=usd`,
-	// 			);
-	// 			const data = await res.json();
-	// 			setPrice(data.monero.usd);
-	// 			setTokenType('USD');
-	// 		} catch {
-	// 			setPrice(1);
-	// 			setTokenType('XMR');
-	// 		}
-	// 	} else {
-	// 		setTokenType('XMR');
-	// 		setPrice(1);
-	// 	}
-	// };
+	const sampleData = settings.cartInfo["ALL"] || [];
+	
+	const totalBalance = settings.coinInfo.reduce((total, token) => total + (token.amount * settings.priceInfo[token.symbol]), 0);
 
 	return (
 		<div className="flex flex-col h-screen">
@@ -114,8 +41,8 @@ export const Home = () => {
 				<div className="bg-[#1d1d1d] border rounded-xl border-[#212121] mb-5 pb-10">
 					<div className="flex flex-row items-center justify-between px-5 border-b border-[#252525] mb-10">
 						<div>
-							<span className="text-[50px] text-white">$0</span>
-							<span>.00</span>
+							<span className="text-[50px] text-white">${Math.floor(totalBalance).toLocaleString()}</span>
+							<span>.{(totalBalance % 1).toFixed(2).split('.')[1]}</span>
 						</div>
 						<div className='flex flex-row items-center text-sm'>
 							<div className='flex flex-row border-r gap-2 mr-2 pr-2'>
@@ -144,7 +71,7 @@ export const Home = () => {
 					</div>
 				</div>
 				<div className="flex flex-wrap mb-10">
-					{mockCoin.map((val, index) => (
+					{settings.coinInfo.map((val, index) => (
 						<div
 							className="xl:w-1/3 w-1/2  p-1"
 							key={`dashboard_coin_${index}`}
@@ -162,7 +89,7 @@ export const Home = () => {
 										<div className="flex flex-col text-sm ">
 											<div className="text-white">{val.name.split(' #1')}</div>
 											<div className="flex items-center gap-2">
-												<PiWallet />1
+												<PiWallet />{1}
 											</div>
 										</div>
 									</div>
@@ -176,8 +103,8 @@ export const Home = () => {
 									</div>
 								</div>
 								<div>
-									<span className="text-white text-[30px] pl-2">$0</span>
-									<span>.00</span>
+									<span className="text-white text-[30px] pl-2">${(Math.floor(val.amount * settings.priceInfo[val.symbol])).toLocaleString()}</span>
+									<span>.{((val.amount * settings.priceInfo[val.symbol]) % 1).toFixed(2).split('.')[1]}</span>
 								</div>
 								<div className="text-sm mb-1 pl-2">
 									{val.amount} {val.symbol}
@@ -186,7 +113,7 @@ export const Home = () => {
 									<div className="w-1/3">
 										Price
 										<br />
-										<span className="text-white">$96,407</span>
+										<span className="text-white">${(settings.priceInfo[val.symbol]).toLocaleString()}</span>
 									</div>
 									<div className="w-1/3 flex flex-col justify-center text-center">
 										7d change
@@ -275,7 +202,7 @@ export const Home = () => {
 								Start staking
 							</div>
 							<div className="py-2 px-4 bg-[#252525] rounded-full text-gray-200 cursor-pointer">
-								Start staking
+								Maybe later
 							</div>
 						</div>
 					</div>

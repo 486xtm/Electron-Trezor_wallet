@@ -24,7 +24,7 @@ interface BarChartProps {
   type: string
 }
 
-const CustomTooltip = ({ active, payload, label, data }: any) => {
+const CustomTooltip = ({ active, payload, label, data, symbol }: any) => {
   const winData = useWindowSize();
 	if (active && payload && payload.length) {
 		const isLastMonth = label === data[data.length - 1].date;
@@ -43,7 +43,7 @@ const CustomTooltip = ({ active, payload, label, data }: any) => {
 								<span className="text-xs">Received</span>
 							</div>
 							<span className="text-xs font-medium">
-								${payload[0].value.toLocaleString()}
+								{symbol ? "":"$"}{payload[0].value.toLocaleString()} {symbol}
 							</span>
 						</div>
 						<div className="flex justify-between items-center">
@@ -51,7 +51,7 @@ const CustomTooltip = ({ active, payload, label, data }: any) => {
 								<span className="text-xs">Sent</span>
 							</div>
 							<span className="text-xs font-medium">
-								${payload[1].value.toLocaleString()}
+							{symbol ? "":"$"}{payload[1].value.toLocaleString()} {symbol}
 							</span>
 						</div>
 					</div>
@@ -118,7 +118,7 @@ export const BarChart: React.FC<BarChartProps> = ({ data, symbol, type = 'dashbo
 						dx={10}
 					/>
 					<Tooltip
-						content={<CustomTooltip data={data} />}
+						content={<CustomTooltip data={data} symbol = {symbol} />}
 						cursor={{ fill: 'transparent' }}
 						position={{ y: -150 }}
 					/>

@@ -8,12 +8,14 @@ import { IoSwapHorizontalOutline } from 'react-icons/io5';
 import { PiCalendar, PiBroadcast } from 'react-icons/pi';
 import { FiPlus } from 'react-icons/fi';
 import { LuCircleDashed } from 'react-icons/lu';
+import { useGlobalContext } from '@/renderer/context/global-context';
 export const Send = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { theme } = useTheme();
 	const coinInfo = location.state;
 	const [maxToogle, setMaxToggle] = useState(false);
+	const { settings } = useGlobalContext();
 	const [fee, setFee] = useState(1);
 	return (
 		<div className="flex flex-col h-screen">
@@ -38,7 +40,7 @@ export const Send = () => {
 								alt="coin"
 							/>
 							<span>
-								{coinInfo.amount} {coinInfo.symbol} ≈ $0
+								{coinInfo.amount} {coinInfo.symbol} ≈ ${(settings.priceInfo[coinInfo.symbol] * coinInfo.amount).toLocaleString()}
 							</span>
 						</div>
 					</div>

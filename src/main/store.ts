@@ -65,15 +65,24 @@ const schema: Store.Schema<StoreType> = {
 				type: 'string',
 				enum: ['light', 'dark', 'system'],
 			},
-			balance: {
-				type: 'number',
+			coinInfo : {
+				type: 'array',
+				default: [],
 			},
-			address: {
-				type: 'string',
+			cartInfo: {
+				type: 'object',
+				default: {},
+			},
+			cartInitial: {
+				type: 'boolean',
 			},
 			transactions: {
 				type: 'array',
 				default: [],
+			},
+			priceInfo: {
+				type: 'object',
+				default: {},
 			},
 			isMaximized: {
 				type: 'boolean',

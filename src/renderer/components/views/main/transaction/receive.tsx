@@ -4,11 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@/renderer/context/theme-context';
 import { cn } from '@/lib/utils';
 import { IoIosArrowBack, IoIosMore } from 'react-icons/io';
+import { generateWalletAddress } from '@/renderer/lib/utls';
+import { useGlobalContext } from '@/renderer/context/global-context';
 export const Receive = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { theme } = useTheme();
 	const coinInfo = location.state;
+	const { settings } = useGlobalContext();
 	return (
 		<div className="flex flex-col h-screen">
 			<div className="flex flex-row justify-between py-1 px-4 border-b border-[#212121] mb-3">
@@ -32,7 +35,7 @@ export const Receive = () => {
 								alt="coin"
 							/>
 							<span>
-								{coinInfo.amount} {coinInfo.symbol} ≈ $0
+								{coinInfo.amount} {coinInfo.symbol} ≈ ${(coinInfo.amount * settings.priceInfo[coinInfo.symbol]).toLocaleString()}
 							</span>
 						</div>
 					</div>
@@ -53,7 +56,7 @@ export const Receive = () => {
 									'linear-gradient(to right, black 10%, transparent)',
 							}}
 						>
-							bc1q56ll3jc3ze
+							{generateWalletAddress(coinInfo.symbol).slice(0,14)}
 						</div>
 					</div>
 					<div className="text-black bg-[#d3ac4c] rounded-full py-3 px-5 cursor-pointer">
@@ -66,15 +69,15 @@ export const Receive = () => {
 						<span>Address</span>
 						<span>Total received</span>
 					</div>
-					{[{address: "bc1qk15ce54n23e7", amount: "0.33879329"},
-            {address: "bc1qk15ce54n23e7", amount: "0.45723939"},
-            {address: "bc1qk15ce54n23e7", amount: "0.83618746"},
-            {address: "bc1qk15ce54n23e7", amount: "2.95014624"},
-            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
-            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
-            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
-            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
-            {address: "bc1qk15ce54n23e7", amount: "0.33879329"},
+					{[{address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
+            {address: generateWalletAddress(coinInfo.symbol).slice(0,14), amount: (Math.random() * 10).toFixed(3)},
           ].map((val, index) => (
 						<div className="flex flex-row items-center justify-between px-5 py-3 border-[#252525] border-t text-white">
 							<div
