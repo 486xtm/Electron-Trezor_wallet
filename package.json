@@ -172,7 +172,7 @@
 	},
 	"devDependencies": {
 		"@electron/rebuild": "^3.6.0",
-		"@hookform/resolvers": "^3.9.0",
+		"@hookform/resolvers": "^4.1.1",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
 		"@svgr/webpack": "^8.1.0",
 		"@teamsupercell/typings-for-css-modules-loader": "^2.5.2",
